@@ -41,7 +41,7 @@ public class ConsumerController {
 	}
 
 	@GetMapping("")
-	public ResponseEntity<?> getAllSuppliers() {
+	public ResponseEntity<?> getAllConsumer() {
 		try{
 			List<ConsumerResponseDto> supplierDtos = consumerService.getConsumer();
 			if (supplierDtos != null) {
@@ -56,7 +56,7 @@ public class ConsumerController {
 	}
 
 	@PostMapping("")
-	public ResponseEntity<String> addSupplier(@RequestBody ConsumerRequestDto consumerRequestDto) {
+	public ResponseEntity<String> addConsumer(@RequestBody ConsumerRequestDto consumerRequestDto) {
 		try{
 			Consumer supplier = modelMapper.map(consumerRequestDto, Consumer.class);
 			Long supplierId = consumerService.addConsumer(supplier);
@@ -67,24 +67,24 @@ public class ConsumerController {
 		}
 	}
 
-	@PutMapping("/{supplierId}")
-	public ResponseEntity<?> updateSupplier(@PathVariable("supplierId") Long supplierId,
+	@PutMapping("/{consumerId}")
+	public ResponseEntity<?> updateConsumer(@PathVariable("consumerId") Long consumerId,
 															  @RequestBody ConsumerRequestDto supplierRequestDto) {
 		try{
-			ConsumerResponseDto supplierResponseDto = consumerService.updateConsumer(supplierId, supplierRequestDto);
-			if (supplierResponseDto != null)
-				return new ResponseEntity<>(supplierResponseDto, HttpStatus.CREATED);
+			ConsumerResponseDto consumerResponseDto = consumerService.updateConsumer(consumerId, supplierRequestDto);
+			if (consumerResponseDto != null)
+				return new ResponseEntity<>(consumerResponseDto, HttpStatus.CREATED);
 			else
-				return new ResponseEntity<>(String.format("No Supplier exist in the database with provided id %s.", supplierId), HttpStatus.OK);
+				return new ResponseEntity<>(String.format("No Supplier exist in the database with provided id %s.", consumerId), HttpStatus.OK);
 		}catch (Exception ex){
-			LOGGER.error("Error occurred while processing /suppliers/supplierId", ex);
+			LOGGER.error("Error occurred while processing /consumerId/consumerId", ex);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
-	@DeleteMapping("/{supplierId}")
-	public ResponseEntity<String> deleteSupplier(@PathVariable("supplierId") Long supplierId) {
-		String message = consumerService.deleteConsumer(supplierId);
+	@DeleteMapping("/{consumerId}")
+	public ResponseEntity<String> deleteSupplier(@PathVariable("consumerId") Long consumerId) {
+		String message = consumerService.deleteConsumer(consumerId);
 		return new ResponseEntity<>(message, HttpStatus.OK);
 	}
 
