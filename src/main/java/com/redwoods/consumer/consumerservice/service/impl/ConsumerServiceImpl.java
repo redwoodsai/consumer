@@ -90,7 +90,7 @@ public class ConsumerServiceImpl implements ConsumerService {
 			Optional<Consumer> optionalConsumer = consumerRepository.findById(consumerId);
 			if (optionalConsumer.isPresent()) {
 				Consumer supplier = optionalConsumer.get();
-				supplier.setSupplierName(consumerRequestDto.getSupplierName());
+				supplier.setConsumerName(consumerRequestDto.getSupplierName());
 				supplier.setBadge(consumerRequestDto.getBadge());
 				supplier.setDefCurrency(consumerRequestDto.getDefCurrency());
 				supplier.setDefLang(consumerRequestDto.getDefLang());
@@ -109,9 +109,9 @@ public class ConsumerServiceImpl implements ConsumerService {
 				supplier.setPcLastName(consumerRequestDto.getPcLastName());
 				supplier.setPcEmail(consumerRequestDto.getPcEmail());
 
-				if(consumerRequestDto.getSupplierContact() != null)
+				if(consumerRequestDto.getConsumerContact() != null)
 				{
-					ConsumerContact supplierContact = modelMapper.map(consumerRequestDto.getSupplierContact(), ConsumerContact.class);
+					ConsumerContact supplierContact = modelMapper.map(consumerRequestDto.getConsumerContact(), ConsumerContact.class);
 					supplier.setConsumerContact(supplierContact);
 				}
 

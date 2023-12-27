@@ -32,5 +32,5 @@ public class ConsumerRequestDto {
 	private List<AddressDto> address;
 	private List<ConsumerDataDto> supplierData;
 	private byte[] logo;
-	private ConsumerContactDto supplierContact;
+	private ConsumerContactDto consumerContact;
 }

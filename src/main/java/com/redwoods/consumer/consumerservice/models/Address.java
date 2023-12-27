@@ -24,6 +24,6 @@ public class Address extends BaseModel {
 	private String currency;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "supplier_id")
+	@JoinColumn(name = "consumer_id")
 	private Consumer consumer;
 }

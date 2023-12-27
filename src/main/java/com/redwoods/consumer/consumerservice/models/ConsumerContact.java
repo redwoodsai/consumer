@@ -20,6 +20,6 @@ public class ConsumerContact extends BaseModel {
     private String email;
     private String workPhone;
     private String mobile;
-    @OneToOne(mappedBy = "supplierContact")
+    @OneToOne(mappedBy = "consumerContact")
     private Consumer consumer;
 }

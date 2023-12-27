@@ -10,10 +10,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "suppliers")
+@Table(name = "consumers")
 public class Consumer extends BaseModel {
 
-	private String supplierName;
+	private String ConsumerName;
 	private String UIdType;
 	private String UIdValue;
 	private String displayName;
@@ -36,14 +36,14 @@ public class Consumer extends BaseModel {
 	private Boolean isNetZeroCommitted;
 	private Long netZeroCommitDate;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier", orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "consumer", orphanRemoval = true)
 	@Setter(AccessLevel.NONE) private List<Address> address;
 
-	@OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "consumer", cascade = CascadeType.ALL, orphanRemoval = true)
 	@Setter(AccessLevel.NONE) private List<ConsumerData> consumerData;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "supplier_contact_id", referencedColumnName = "id")
+	@JoinColumn(name = "consumer_contact_id", referencedColumnName = "id")
 	private ConsumerContact consumerContact;
 
 	/*@OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
