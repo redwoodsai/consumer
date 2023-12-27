@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "consumers")
 public class Consumer extends BaseModel {
 
-	private String ConsumerName;
+	private String consumerName;
 	private String UIdType;
 	private String UIdValue;
 	private String displayName;
