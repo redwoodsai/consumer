@@ -35,7 +35,7 @@ public class ConsumerController {
 			ConsumerResponseDto consumerResponseDto = consumerService.getConsumer(consumerId);
 			return new ResponseEntity<>(consumerResponseDto, HttpStatus.OK);
 		}catch (Exception ex){
-			LOGGER.error("Error occurred while processing /suppliers/supplierId", ex);
+			LOGGER.error("Error occurred while processing /consumers/consumerId", ex);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -47,10 +47,10 @@ public class ConsumerController {
 			if (supplierDtos != null) {
 				return new ResponseEntity<>(supplierDtos, HttpStatus.OK);
 			}else{
-				return new ResponseEntity<>("No suppliers available!!", HttpStatus.OK);
+				return new ResponseEntity<>("No consumers available!!", HttpStatus.OK);
 			}
 		}catch (Exception ex){
-			LOGGER.error("Error occurred while processing /suppliers", ex);
+			LOGGER.error("Error occurred while processing consumers", ex);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -58,11 +58,11 @@ public class ConsumerController {
 	@PostMapping("")
 	public ResponseEntity<String> addConsumer(@RequestBody ConsumerRequestDto consumerRequestDto) {
 		try{
-			Consumer supplier = modelMapper.map(consumerRequestDto, Consumer.class);
-			Long supplierId = consumerService.addConsumer(supplier);
-			return new ResponseEntity<>(String.format("New supplier added %s successfully.", supplierId), HttpStatus.CREATED);
+			Consumer consumer = modelMapper.map(consumerRequestDto, Consumer.class);
+			Long consumerId = consumerService.addConsumer(consumer);
+			return new ResponseEntity<>(String.format("New ConsumerId added %s successfully.", consumerId), HttpStatus.CREATED);
 		}catch (Exception ex){
-			LOGGER.error("Error occurred while processing /suppliers", ex);
+			LOGGER.error("Error occurred while processing consumers", ex);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
